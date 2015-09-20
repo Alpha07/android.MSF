@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://www.metasploit.com'
   spec.license       = 'BSD-3-clause'
 
-  spec.files         = `git ls-files`.split($/).reject { |file|
+  spec.files         = Dir["**/*"].reject {|f| File.directory?(f) }.reject { |file|
     file =~ /^config/
   }
   spec.bindir = '.'
@@ -54,22 +54,22 @@ Gem::Specification.new do |spec|
   # Needed for config.action_view for view plugin compatibility for Pro
   spec.add_runtime_dependency 'actionpack', rails_version_constraint
   # Needed for some admin modules (cfme_manageiq_evm_pass_reset.rb)
-  spec.add_runtime_dependency 'bcrypt'
+  spec.add_runtime_dependency 'bcrypt', '3.1.7'
   # Needed for Javascript obfuscation
   spec.add_runtime_dependency 'jsobfu', '~> 0.2.0'
   # Needed for some admin modules (scrutinizer_add_user.rb)
-  spec.add_runtime_dependency 'json'
+  spec.add_runtime_dependency 'json', '1.8.1'
   # Metasploit::Concern hooks
-  spec.add_runtime_dependency 'metasploit-concern', '~> 0.3.0'
+  spec.add_runtime_dependency 'metasploit-concern', '0.3.0'
   # Things that would normally be part of the database model, but which
   # are needed when there's no database
   spec.add_runtime_dependency 'metasploit-model', '~> 0.28.0'
   # Needed for Meterpreter on Windows, soon others.
   spec.add_runtime_dependency 'meterpreter_bins', '0.0.12'
   # Needed by msfgui and other rpc components
-  spec.add_runtime_dependency 'msgpack'
+  spec.add_runtime_dependency 'msgpack', '0.5.5'
   # Needed by anemone crawler
-  spec.add_runtime_dependency 'nokogiri'
+  spec.add_runtime_dependency 'nokogiri', '1.6.0'
   # Needed by db.rb and Msf::Exploit::Capture
   spec.add_runtime_dependency 'packetfu', '1.1.9'
   # Run initializers for metasploit-concern, metasploit-credential, metasploit_data_models Rails::Engines
@@ -89,7 +89,7 @@ Gem::Specification.new do |spec|
   # Needed by some modules
   spec.add_runtime_dependency 'rubyzip', '~> 1.1'
   # Needed for some post modules
-  spec.add_runtime_dependency 'sqlite3'
+  spec.add_runtime_dependency 'sqlite3', '1.3.9'
   # required for Time::TZInfo in ActiveSupport
   spec.add_runtime_dependency 'tzinfo'
 end

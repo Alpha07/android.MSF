@@ -37,5 +37,5 @@ Gem::Specification.new do |spec|
   # depend on metasploit-framewrok as the optional gems are useless with the actual code
   spec.add_runtime_dependency 'metasploit-framework', "= #{spec.version}"
   # Needed for module caching in Mdm::ModuleDetails
-  spec.add_runtime_dependency 'pg', '>= 0.11'
+  spec.add_runtime_dependency 'pg', '0.17.1'
 end

@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   # depend on metasploit-framewrok as the optional gems are useless with the actual code
   spec.add_runtime_dependency 'metasploit-framework', "= #{spec.version}"
   # get list of network interfaces, like eth* from OS.
-  spec.add_runtime_dependency 'network_interface', '~> 0.0.1'
+  spec.add_runtime_dependency 'network_interface', '0.0.1'
   # For sniffer and raw socket modules
-  spec.add_runtime_dependency 'pcaprub'
+  spec.add_runtime_dependency 'pcaprub', '0.10.0'
 end
