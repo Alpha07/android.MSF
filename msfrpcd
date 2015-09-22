@@ -93,18 +93,19 @@ require 'msf/ui'
 
 # Fork into the background if requested
 begin
-  if foreground
-    $stdout.puts "[*] #{rpctype}RPC ready at #{Time.now}."
-  else
+  unless foreground
     $stderr.puts "[*] #{rpctype}RPC backgrounding at #{Time.now}..."
     exit(0) if Process.fork()
   end
 rescue ::NotImplementedError
   $stderr.puts "[-] Background mode is not available on this platform"
+  foreground = true
 end
 
 # Create an instance of the framework
 $framework = Msf::Simple::Framework.create(frameworkOpts)
+
+$stdout.puts "[*] #{rpctype}RPC ready at #{Time.now}." if foreground
 
 # Run the plugin instance in the foreground.
 begin
